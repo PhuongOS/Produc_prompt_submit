@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Reset & Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* --- Form Container & Typography --- */
+.form-container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    color: #FFFFFF;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #A0A0A0;
+    margin-bottom: 2.5rem;
+}
+
+/* --- Input Group & Labels --- */
+label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #C0C0C0;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #808080;
+    font-size: 1rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* --- General Input Styling --- */
+input[type="text"],
+input[type="url"],
+input[type="datetime-local"],
+textarea,
+select {
+    width: 100%;
+    background-color: #1E1E1E;
+    color: #E0E0E0;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 14px 16px 14px 48px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #666666;
+}
+
+/* --- Specific Input Styling --- */
+textarea {
+    resize: vertical;
+    padding-top: 14px;
+}
+
+select#channels,
+select#post_type {
+    display: none;
+}
+
+input[type="datetime-local"] {
+    padding-right: 16px;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6);
+}
+
+.file-input {
+    padding: 6px 16px 6px 48px;
+}
+
+.file-input::file-selector-button {
+    border: none;
+    background: #333;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #E0E0E0;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+    margin-right: 12px;
+}
+
+.file-input::file-selector-button:hover {
+    background: #444;
+}
+
+/* --- Focus State --- */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #555555;
+    box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.2);
+}
+
+/* --- Terms & Button --- */
+.terms {
+    font-size: 0.8rem;
+    color: #A0A0A0;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.terms a {
+    color: #C0C0C0;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #121212;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+/* --- CUSTOM STYLES FOR SLIM SELECT --- */
+.ss-main {
+    background-color: #1E1E1E;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    color: #E0E0E0;
+    font-size: 1rem;
+}
+
+.ss-main.ss-open-above,
+.ss-main.ss-open-below {
+    border-color: #555555;
+    box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.2);
+}
+
+.ss-single-selected,
+.ss-multi-selected {
+    padding: 6px 16px 6px 10px;
+    height: auto;
+}
+
+.ss-single-selected .ss-placeholder {
+    color: #666666;
+}
+
+.ss-multi-selected .ss-values .ss-value {
+    background-color: #333333;
+    color: #E0E0E0;
+    border-radius: 5px;
+}
+
+.ss-multi-selected .ss-values .ss-value .ss-value-delete {
+    color: #A0A0A0;
+}
+
+.ss-content {
+    background-color: #242424;
+    border: 1px solid #333333;
+    border-radius: 8px;
+}
+
+.ss-content .ss-search input {
+    background-color: #1E1E1E;
+    border: 1px solid #444444;
+    color: #E0E0E0;
+}
+
+.ss-content .ss-search input:focus {
+    box-shadow: none;
+}
+
+.ss-content .ss-list .ss-option {
+    color: #C0C0C0;
+    transition: background-color 0.1s ease;
+}
+
+.ss-content .ss-list .ss-option:hover,
+.ss-content .ss-list .ss-option.ss-highlighted {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+.ss-content .ss-list .ss-option.ss-disabled {
+    background-color: #242424;
+    color: #666666;
+}
+
+/* 
+===============================================
+✅ RESPONSIVE STYLES FOR MOBILE DEVICES ✅
+===============================================
+*/
+@media (max-width: 600px) {
+    body {
+        /* Giảm padding trên body để form chiếm nhiều không gian hơn */
+        padding: 1rem 0.5rem;
+        align-items: flex-start;
+        /* Căn form lên trên cùng */
+    }
+
+    .form-container {
+        /* Giảm padding bên trong form để các trường input rộng hơn */
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        /* Giảm kích thước tiêu đề một chút */
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        /* Giảm kích thước phụ đề và khoảng cách bên dưới */
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Tăng kích thước font chữ mặc định một chút cho dễ đọc hơn trên mobile */
+    input[type="text"],
+    input[type="url"],
+    input[type="datetime-local"],
+    textarea,
+    .ss-main {
+        font-size: 16px;
+        /* 16px là kích thước chuẩn để tránh trình duyệt tự động zoom */
+    }
+
+    .submit-btn {
+        padding: 18px;
+        /* Làm nút bấm to hơn, dễ nhấn hơn */
+        font-size: 1.05rem;
+    }
+}

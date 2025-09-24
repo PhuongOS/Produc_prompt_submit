@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tạo Lịch Đăng Sản Phẩm</title>
+
+    <link rel="stylesheet" href="./Styles/Style.css" />
+
+    <!-- Link to Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Link to Slim Select CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/slim-select@latest/dist/slimselect.css"
+    />
+
+    <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="logo">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white" />
+          <path d="M2 17L12 22L22 17L12 12L2 17Z" fill="#cccccc" />
+          <path
+            d="M2 7L12 12L22 7L12 2L2 7Z"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2 17L12 12L22 17"
+            stroke="#cccccc"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <line
+            x1="12"
+            y1="12"
+            x2="12"
+            y2="22"
+            stroke="#cccccc"
+            stroke-width="1.5"
+          />
+          <line
+            x1="2"
+            y1="7"
+            x2="2"
+            y2="17"
+            stroke="white"
+            stroke-width="1.5"
+          />
+          <line
+            x1="22"
+            y1="7"
+            x2="22"
+            y2="17"
+            stroke="white"
+            stroke-width="1.5"
+          />
+        </svg>
+      </div>
+
+      <h1>Đăng Sản phẩm</h1>
+      <p class="subtitle">Bắt đầu quy trình đăng bài của bạn ngay hôm nay</p>
+
+      <form
+        action="https://hha0a060rw2.sn.mynetname.net/webhook/product/v1/api/addnew"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <!-- Tên sản phẩm -->
+        <label for="product_name">Tên sản phẩm</label>
+        <div class="input-group">
+          <i class="fas fa-tag"></i>
+          <input
+            type="text"
+            id="product_name"
+            name="product_name"
+            placeholder="Ví dụ: Laptop Dell XPS 15"
+            required
+          />
+        </div>
+
+        <!-- Link tham khảo -->
+        <label for="ref_links">Link tham khảo</label>
+        <div class="input-group">
+          <i class="fas fa-link"></i>
+          <textarea
+            id="ref_links"
+            name="ref_links"
+            placeholder="Xuống dòng cho mỗi link"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Link youtube -->
+        <label for="youtube_link">Link youtube</label>
+        <div class="input-group">
+          <i class="fab fa-youtube"></i>
+          <input
+            type="url"
+            id="youtube_link"
+            name="youtube_link"
+            placeholder="https://www.youtube.com/watch?v=..."
+          />
+        </div>
+
+        <!-- Loại bài viết -->
+        <label for="post_type">Loại bài viết</label>
+        <div class="input-group">
+          <i class="fas fa-file-alt"></i>
+          <select id="post_type" name="post_type" required>
+            <option value="" disabled selected data-placeholder="true"></option>
+            <option value="Blog">Blog</option>
+            <option value="Product">Product</option>
+            <option value="Product combo">Product combo</option>
+          </select>
+        </div>
+
+        <!-- Lịch đăng -->
+        <label for="schedule_time">Lịch đăng</label>
+        <div class="input-group">
+          <i class="fas fa-calendar-alt"></i>
+          <input
+            type="datetime-local"
+            id="schedule_time"
+            name="schedule_time"
+            required
+          />
+        </div>
+
+        <!-- Kênh đăng (sẽ được thay thế bằng Slim Select) -->
+        <label for="channels">Kênh đăng</label>
+        <div class="input-group">
+          <!-- Icon sẽ bị ẩn đi vì Slim Select có giao diện riêng -->
+          <select id="channels" name="channels" multiple required>
+            <option value="thietbihatlive">thietbihatlive</option>
+            <option value="dientulamphat">dientulamphat</option>
+          </select>
+        </div>
+
+        <!-- Thumbnail -->
+        <label for="thumbnail">Thumbnail</label>
+        <div class="input-group">
+          <i class="fas fa-image"></i>
+          <input
+            type="file"
+            id="thumbnail"
+            name="thumbnail"
+            accept="image/*"
+            class="file-input"
+          />
+        </div>
+
+        <p class="terms">
+          Bằng cách nhấn gửi, bạn đồng ý với
+          <a href="#">Điều khoản Dịch vụ</a> của chúng tôi.
+        </p>
+
+        <button type="submit" class="submit-btn">Gửi Lịch Đăng</button>
+      </form>
+    </div>
+
+    <!-- Script cho Slim Select -->
+    <script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
+    <script>
+      // Kích hoạt Slim Select cho dropdown Loại bài viết (chọn 1)
+      new SlimSelect({
+        select: "#post_type",
+        settings: {
+          showSearch: false, // Ẩn thanh tìm kiếm vì ít lựa chọn
+          placeholderText: "Chọn loại bài viết...",
+        },
+      });
+
+      // Kích hoạt Slim Select cho dropdown Kênh đăng (chọn nhiều)
+      new SlimSelect({
+        select: "#channels",
+        settings: {
+          placeholderText: "Chọn một hoặc nhiều kênh...",
+          searchText: "Không tìm thấy kênh",
+          searchPlaceholder: "Tìm kiếm kênh",
+        },
+      });
+    </script>
+  </body>
+</html>
